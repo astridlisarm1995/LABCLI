@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="post">
+
+
+    {%  csrf_token %}
+    <h3> Desea eliminar el resultado de {{ object.resultadodat.paciente.cedula}}? del {{  object.fecharesultado }}</h3>
+    <button class= "btm btn" type="submit">Si, eliminar</button>
+    <a class= "btn btn-default" href= "{% url 'Laboratorio:ver_resultados_examen' %}">Cancelar</a>
+</form>
+{% endblock %}

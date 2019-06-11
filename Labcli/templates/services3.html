@@ -1,0 +1,303 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Services</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="CareMed demo project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/services.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/services_responsive.css' %}">
+
+</head>
+<body>
+
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header trans_200">
+
+<!-- Top Bar -->
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+							<div class="emergencies  d-flex flex-row align-items-center justify-content-start ml-auto">En caso de Emergencia: 0424 - 1234560</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Content -->
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<nav class="main_nav ml-auto">
+								<ul>
+                				  <li><a href="{% url 'home:home' %}">Inicio</a></li>
+                 				 <li><a href="{% url 'home:services3' %}">Servicios</a></li>
+							{% if user.is_asistente or user.is_bioanalista %}
+				 				  <li><a href="{% url 'home:services' %}">Servicios Laboratorio</a></li>
+				                  {%endif%} 
+              					  <li><a href="{% url 'home:contacto' %}">Contacto</a></li>
+              					  <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+								</ul>
+							</nav>
+							<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</div>
+
+		<!-- Logo -->
+		<div class="logo_container_outer">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="logo_container">
+							<a href="#">
+								<div class="logo_content d-flex flex-column align-items-start justify-content-center">
+									<div class="logo_line"></div>
+									<div class="logo d-flex flex-row align-items-center justify-content-center">
+										<div class="logo_text">LABCLI</span></div>
+										<div class="logo_box">+</div>
+									</div>
+									<div class="logo_sub">LABORATORIO CLÍNICO</div>
+									<div class="logo_sub">LA INMACULADA</div>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</header>
+
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src= "{% static 'images/services.jpg' %}" data-speed="0.8"></div>
+		<div class="home_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="home_content">
+							<div class="home_title"><span>LABCLI</span> Servicios</div>
+							<div class="breadcrumbs">
+								<ul>
+									<li><a href="{% url 'Laboratorio:ver_lista2' %}">Mis Resultados</a></li>
+									<li><a href="{% url 'Paciente:index2' %}">Mis Datos</a></li>
+
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+  <!-- Services -->
+
+  <div class="services">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="section_title"><h2>Servicios que brindamosss</h2></div>
+        </div>
+      </div>
+      <div class="row services_row">
+        
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+        <a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg' %}" alt=""></div>
+              <div class="service_title trans_200">Hematología</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+		<a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg'%}" alt=""></div>
+              <div class="service_title trans_200">Bioquímica</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+		<a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg'%}" alt=""></div>
+              <div class="service_title trans_200">Marcados Cardiacos</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+ 		<a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg'%}" alt=""></div>
+              <div class="service_title trans_200">Electrolitos</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+		<a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg'%}" alt=""></div>
+              <div class="service_title trans_200">Orina</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+ 		<a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg'%}" alt=""></div>
+              <div class="service_title trans_200">Parasitología</div>
+            </div>
+          </a>
+        </div>
+
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+		<a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg'%}" alt=""></div>
+       <div class="service_title trans_200">Bacteriología</div>
+
+
+            </div>
+          </a>
+        </div>
+
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+		<a href="{% url 'home:services3' %}">
+
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg' %}" alt=""></div>
+              <div class="service_title trans_200">ANTIDOPING</div>
+            </div>
+          </a>
+        </div>
+
+
+        <!-- Service -->
+        <div class="col-lg-4 col-md-6 service_col">
+		<a href="{% url 'home:services3' %}">
+            <div class="service text-center trans_200">
+              <div class="service_icon"><img class="svg" src="{% static 'images/service_6.svg' %}" alt=""></div>
+              <div class="service_title trans_200">Hormonas</div>
+            </div>
+          </a>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+				<!-- Feature -->
+						<div class="feature">
+							<div class="feature_content">
+								<div class="section_title"><h2>EXAMENES</h2></div>
+								<div class="feature_text">
+
+				<li><a href="{% url 'Examenes:ver_lista' %}"> Ver descripción de exámenes </a></li>			
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Text Section -->
+
+	<div class="text_section">
+		<div class="container">
+			<div class="row">
+				
+
+	<!-- Footer -->
+
+	<footer class="footer">
+		<div class="footer_container">
+			<div class="container">
+				<div class="row">
+					
+					<!-- Footer - About -->
+					<div class="col-lg-4 footer_col">
+						<div class="footer_about">
+							<div class="footer_logo_container">
+								<a href="#" class="d-flex flex-column align-items-center justify-content-center">
+									<div class="logo_content">
+										<div class="logo d-flex flex-row align-items-center justify-content-center">
+											<div class="logo_text"><span>LABCLI</span></div>
+											<div class="logo_box">+</div>
+										</div>
+									</div>
+								</a>
+							</div>
+							<div class="footer_about_text">
+								<p>Te esperamos.</p>
+							</div>
+							<ul class="footer_about_list">
+								<li><div class="footer_about_icon"><img src="{% static 'images/phone-call.svg' %}" alt=""></div><span> 0275 - 8825555</span></li>
+								<li><div class="footer_about_icon"><img src="{% static 'images/envelope.svg' %}" alt=""></div><span>laboratorioclinicolainmaculada@gmail.com</span></li>
+								<li><div class="footer_about_icon"><img src="{% static 'images/placeholder.svg' %}" alt=""></div><span>La Inmaculada, calle 3, Mérida, Venezuela.</span></li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>
+
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/services.js' %}"></script>
+
+
+
+</body>
+</html>

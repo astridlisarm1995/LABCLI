@@ -1,0 +1,144 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>News</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="CareMed demo project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/news.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/news_responsive.css' %}">
+</head>
+<body>
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header trans_200">
+		
+		<!-- Top Bar -->
+		<div class="top_bar">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+							<div class="emergencies  d-flex flex-row align-items-center justify-content-start ml-auto">En caso de Emergencia: 0424 - 1234560</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Header Content -->
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<nav class="main_nav ml-auto">
+								<ul>
+               					   <li><a href="{% url 'home:home' %}">Inicio</a></li>
+             					   <li><a href="{% url  'home:services3' %}">Servicios</a></li>
+				                  {% if user.is_asistente or user.is_bioanalista %}
+				 				          <li><a href="{% url 'home:services' %}">Servicios Laboratorio</a></li>
+				                  {%endif%}   
+             					   
+             				       <li><a href="{% url 'home:contacto' %}">Contacto</a></li>
+              					   <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+
+             				   </ul>
+							</nav>
+							<div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</header>
+
+	<!-- Menu -->
+
+	<!-- News -->
+
+	<div class="news">
+		<div class="container">
+			<div class="row">
+				
+
+						<!-- News Post -->
+						<div class="news_post">
+							<div class="news_body">
+
+                {% if not user.is_authenticated %}
+
+						<form method="post">
+						{% csrf_token %}
+						 <div class="row">
+					    	<div class="col-md-2 col-md-offset-3">
+					    		<div class="form-group">
+					        		<label for="username">Nombre de usuario:</label>
+					        		<input class="form-control" type="text" name="username">
+					    	   </div>
+					        </div>
+					    </div>
+					    <div class="row">
+					    	<div class="col-md-2 col-md-offset-3">
+					    		<div class="form-group">
+					        		<label for="username">Contraseña:</label>
+					        		<input class="form-control" type="password" name="password">
+					    	   </div>
+					        </div>
+					    </div>
+					    <div class="row">
+					    	<div class="col-md-6 col-md-offset-3">
+					    		<div class="form-group">
+									<input class="btn btn-primary" type="submit" value="Iniciar sesion" name="continue" >
+					                <a href="{% url 'password_reset' %}">Olvidé mi contraseña</a>
+					                {% if user.is_asistente or user.is_bioanalista %}
+					        		 <li><a href="{% url 'usuario:registrar' %}">Registrarse</a></li>
+					        		  {%endif%}
+
+					    	   </div>
+					        </div>
+					    </div>
+					</form>
+							</div>
+
+
+                {%else%}
+                   <li><a href="{% url 'logout' %}">Salir</a></li>
+					{% if user.is_asistente or user.is_bioanalista %}
+					<li><a href="{% url 'usuario:registrar' %}">Registrarse</a></li>
+					{%endif%}
+                {%endif%}
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/news.js' %}"></script>
+</body>
+</html>

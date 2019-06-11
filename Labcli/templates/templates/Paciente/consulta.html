@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h4> Mis Datos</h4>
+{%for obj in obj%}
+
+    <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <td>#</td>
+                                <td>Cedula</td>
+                                <td>Nombres</td>
+                                <td>Apellidos</td>
+                                <td>Sexo</td>
+                                <td>Fecha de nacimiento</td>
+                                <td>user</td>
+
+                              </tr>
+
+                            </thead>
+                              <tr>
+                                <td>{{obj.id}}</td>
+                                <td>{{obj.cedula}}</td>
+                                <td>{{ obj.nombrepa }}</td>
+                                <td>{{ obj.apellidopa }} {{ obj.apellidoma }}</td>
+                                <td>{{ obj.sexo }}</td>
+                                <td>{{ obj.fecha_nac }}</td>
+                                <td>{{ obj.user.username }}</td>
+
+                                      <td>
+
+
+{%endfor%}
+{% endblock %}

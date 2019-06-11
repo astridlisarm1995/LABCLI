@@ -1,0 +1,149 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Services</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="CareMed demo project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/services.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'styles/services_responsive.css' %}">
+
+</head>
+<body>
+
+
+<div class="super_container">
+  
+  <!-- Header -->
+  <header class="header trans_200">
+
+<!-- Top Bar -->
+    <div class="top_bar">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+              <div class="emergencies  d-flex flex-row align-items-center justify-content-start ml-auto">En caso de Emergencia: 0424 - 1234560</div>
+            
+                          <li><a href="{% url 'home:home' %}">Inicio</a></li>
+                          <li><a href="{% url  'home:services3' %}">Servicios</a></li> 
+                          {% if user.is_asistente or user.is_bioanalista %}
+                  <li><a href="{% url 'home:services' %}">Servicios Laboratorio</a></li>
+                          {%endif%} 
+                          <li><a href="{% url 'home:contacto' %}">Contacto</a></li>
+                          <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+  </header>
+
+
+          <div class="gtco-container">
+              <div class="row">
+                  <div class="col-md-20 col-md-offset-2 gtco-heading text-center">
+                      <div class="col-md-18">
+
+
+
+
+                        <div class="home_title"><h1>LABCLI</h1></div>
+
+
+                  <div class="form-group">
+                        <div class="box_title"> SOLICITUDES </div>
+
+</div>
+
+          <div class="gtco-container">
+              <div class="row">
+                  <div class="col-md-20 col-md-offset-20 gtco-heading text-center">
+                      <div class="col-md-20">
+                            {% if user.is_asistente or user.is_bioanalista %}
+
+                            <table class="table table-bordered">
+                              <thead>
+                                <tr>
+                                    <td>Id Solicitud</td>
+                                  <td>Paciente </td>
+                                  <td>Examen </td>
+                                  <td>Fecha Solicitud</td>
+                                   <td>Pagó</td>
+                                </tr>
+
+                              </thead>
+                              <tbody>
+                                {% if object_list %}
+                                {% for Solicitud in object_list %}
+                                <tr>
+                                    <td>{{ Solicitud.id }}
+                                  <td>{{ Solicitud.paciente.id }} {{ Solicitud.paciente.nombrepa }} {{ Solicitud.paciente.apellidopa}}</td>
+                                  <td>{% for Examenes in Solicitud.examenes.all %} {{ Examenes.nombre }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+                                  <td>{{ Solicitud.fecha_sol }}</td>
+                                    <td>{{Solicitud.pagado}} </td>
+
+                                  <td>
+                                    <a class = "btn btn " href="{%  url 'Laboratorio:editar_solicitud2' Solicitud.id %}"
+                                           >Editar</a>
+                                        </td>
+                                        <td>
+                                        <a class = "btn btn" href="{%  url 'Laboratorio:eliminar_lista' Solicitud.id %}"
+                                        >Eliminar</a>
+                                        </td>
+                                </tr>
+                                {% endfor %}
+
+                                {% else %}
+                                <h1>No hay registros de solicitudes</h1>
+                                {% endif %}
+                              </tbody>
+                            </table>
+
+                             {% else %}
+                                          <h3>Por favor inicie sesión para continuar. </h3>
+                                          <a href="{% url 'login' %}" class = "button">Login</a></td>
+                            {% endif %}
+                       </div>
+
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+</div>
+</div>
+
+
+
+  <div class="gototop js-top">
+      <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+  </div>
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
+<script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>
+<script src="{% static 'plugins/easing/easing.js' %}"></script>
+<script src="{% static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
+<script src="{% static 'js/services.js' %}"></script>
+
+
+
+</body>
+</html>
